@@ -1,0 +1,42 @@
+﻿<Window x:Class="Modelisateur.Modules.DbExplorer.Views.DbConnectionView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Modelisateur.Modules.DbExplorer.Views"
+        xmlns:behaviors="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:geminibehaviors="clr-namespace:Gemini.Framework.Behaviors;assembly=Gemini"
+        mc:Ignorable="d"
+        Background="{DynamicResource EnvironmentWindowBackground}"
+        Foreground="{DynamicResource EnvironmentWindowText}"
+        Width="760" Height="500" MinWidth="512" MinHeight="300" 
+        WindowStartupLocation="CenterOwner"
+        ShowInTaskbar="False">
+    <behaviors:Interaction.Behaviors>
+        <geminibehaviors:WindowOptionsBehavior ShowIcon="False"
+                                               ShowMinimizeBox="False"
+                                               ShowMaximizeBox="False" />
+    </behaviors:Interaction.Behaviors>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="Host" />
+        <TextBox Grid.Row="0" Grid.Column="1" x:Name="host" Text="{Binding Host}" />
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Account" />
+        <TextBox Grid.Row="1" Grid.Column="1" x:Name="account" Text="{Binding Account}" />
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="User" />
+        <TextBox Grid.Row="2" Grid.Column="1" x:Name="user" Text="{Binding User}" />
+        <TextBlock Grid.Row="3" Grid.Column="0" Text="Password" />
+        <PasswordBox Grid.Row="3" Grid.Column="1" x:Name="password" />
+        <Button Grid.Row="4" Content="Connect" Click="Button_Click" />
+    </Grid>
+</Window>

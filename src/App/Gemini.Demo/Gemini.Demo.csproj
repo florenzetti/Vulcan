@@ -1,0 +1,75 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFrameworks>netcoreapp3.1;net461</TargetFrameworks>
+    <UseWPF>true</UseWPF>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.de.Designer.cs">
+      <DependentUpon>Resources.de.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Update="Properties\Resources.de.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.de.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Properties\Resources.ko.resx" />
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Properties\Resources.ru.resx" />
+    <EmbeddedResource Update="Properties\Resources.zh-Hans.resx" />
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Resource Include="Modules\FilterDesigner\Resources\*.png" />
+    <HLSLShader Include="Modules\FilterDesigner\ShaderEffects\*.fx">
+      <ShaderProfile>ps_2_0</ShaderProfile>
+      <ObjectFileOutput>$(OutputPath)$([System.IO.Path]::ChangeExtension(%(HLSLShader.Identity), '.ps'))</ObjectFileOutput>
+    </HLSLShader>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Gemini.Modules.CodeEditor" Version="1.0.9-beta" />
+    <PackageReference Include="Gemini.Modules.GraphEditor" Version="1.0.9-beta" />
+    <PackageReference Include="Gemini.Modules.Inspector" Version="1.0.9-beta" />
+    <PackageReference Include="Gemini.Modules.Output" Version="1.0.9-beta" />
+    <PackageReference Include="Gemini.Modules.PropertyGrid" Version="1.0.9-beta" />
+    <PackageReference Include="GeminiWpf" Version="1.0.9-beta" />
+    <PackageReference Include="JeremyAnsel.HLSL.Targets" Version="1.0.9" />
+  </ItemGroup>
+
+  <ItemGroup Condition="$(TargetFramework) != 'net461'">
+    <PackageReference Include="HelixToolkit.Core.Wpf" Version="2.10.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition="$(TargetFramework) == 'net461'">
+    <PackageReference Include="HelixToolkit.Wpf" Version="2.10.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Modules\Startup\" />
+    <Folder Include="Modules\SampleBrowser\" />
+  </ItemGroup>
+
+</Project>

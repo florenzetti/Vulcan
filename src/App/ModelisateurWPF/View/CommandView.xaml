@@ -1,0 +1,12 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:viewModel="clr-namespace:ModelisateurWPF.ViewModel">
+    <DataTemplate DataType="{x:Type viewModel:CommandViewModel}"> 
+        <!--<DataTemplate x:Key="CommandTemplate">-->
+        <TextBlock Margin="10 2 0 2"> 
+            <Hyperlink Command="{Binding Path=Command}"> 
+            <TextBlock Text="{Binding Path=DisplayName}" />
+            </Hyperlink> 
+        </TextBlock>
+    </DataTemplate>
+</ResourceDictionary>
